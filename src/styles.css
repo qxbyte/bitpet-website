@@ -717,53 +717,114 @@ button { color: inherit; font: inherit; cursor: pointer; }
   margin: 0 auto;
 }
 
-.hero-pets {
+/* ----- Hero: dueling pets with swords ----- */
+
+.hero-duel {
   display: inline-flex;
-  align-items: end;
-  gap: 14px;
-  padding: 10px 18px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 32px;
   border: 1px solid var(--night-line);
   border-radius: 999px;
   background: var(--night-2);
   margin-bottom: 26px;
+  min-width: 320px;
 }
 
-.hero-pet {
+.duel-actor {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  flex: 0 0 auto;
+}
+
+.duel-left  { animation: lungeLeft  1.5s ease-in-out infinite; }
+.duel-right { animation: lungeRight 1.5s ease-in-out infinite; }
+
+.duel-pet {
   width: 56px !important;
   height: 56px !important;
   background-size: auto 56px !important;
-}
-
-/* Hero pets: freeze on a single sprite frame, motion comes from CSS transforms */
-.hero-pet-1 {
   background-position: 0 0 !important;
-  animation: petBob 1.4s ease-in-out infinite !important;
-}
-.hero-pet-2 {
-  background-position: -1680px 0 !important; /* sleeping pose */
-  animation: petWiggle 1.8s ease-in-out infinite !important;
-}
-.hero-pet-3 {
-  background-position: -2016px 0 !important; /* active / laptop pose */
-  animation: petRock 1.6s ease-in-out infinite !important;
-  transform-origin: 50% 90%;
+  animation: none !important;
 }
 
-@keyframes petBob {
-  0%, 100% { transform: translateY(0)    scale(1, 1); }
-  45%      { transform: translateY(-6px) scale(0.96, 1.04); }
-  70%      { transform: translateY(0)    scale(1.04, 0.96); }
+.pet-flip { transform: scaleX(-1); }
+
+.sword {
+  display: block;
+  width: 36px;
+  height: 11px;
+  flex: 0 0 auto;
 }
 
-@keyframes petWiggle {
-  0%   { transform: rotate(-5deg) translateX(-2px); }
-  50%  { transform: rotate(5deg)  translateX(2px); }
-  100% { transform: rotate(-5deg) translateX(-2px); }
+.sword-orange {
+  transform-origin: 0% 50%;
+  animation: slashLeft 1.5s ease-in-out infinite;
+  filter: drop-shadow(0 0 4px rgba(255, 180, 107, .55));
 }
 
-@keyframes petRock {
-  0%, 100% { transform: rotate(-4deg) translateY(0); }
-  50%      { transform: rotate(4deg)  translateY(-3px); }
+.sword-blue {
+  transform-origin: 100% 50%;
+  animation: slashRight 1.5s ease-in-out infinite;
+  filter: drop-shadow(0 0 4px rgba(111, 125, 255, .55));
+}
+
+.clash {
+  position: relative;
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+}
+
+.clash::before,
+.clash::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  opacity: 0;
+  animation: clashSpark 1.5s ease-in-out infinite;
+}
+
+.clash::before {
+  background: radial-gradient(circle, #fff3d6 0%, #ffd736 35%, transparent 60%);
+}
+
+.clash::after {
+  background: radial-gradient(circle, #ffffff 0%, transparent 70%);
+  animation-delay: .05s;
+}
+
+@keyframes lungeLeft {
+  0%, 100% { transform: translateX(0); }
+  42%      { transform: translateX(8px); }
+  52%      { transform: translateX(5px); }
+}
+
+@keyframes lungeRight {
+  0%, 100% { transform: translateX(0); }
+  42%      { transform: translateX(-8px); }
+  52%      { transform: translateX(-5px); }
+}
+
+@keyframes slashLeft {
+  0%, 100% { transform: rotate(-10deg); }
+  40%      { transform: rotate(8deg); }
+  55%      { transform: rotate(-4deg); }
+}
+
+@keyframes slashRight {
+  0%, 100% { transform: rotate(10deg); }
+  40%      { transform: rotate(-8deg); }
+  55%      { transform: rotate(4deg); }
+}
+
+@keyframes clashSpark {
+  0%, 30%, 65%, 100% { opacity: 0; transform: scale(.3); }
+  42%, 55%           { opacity: 1; transform: scale(1.4); }
 }
 
 .eyebrow {
@@ -1627,6 +1688,72 @@ button { color: inherit; font: inherit; cursor: pointer; }
   color: var(--night-dim);
   font-size: 13px;
   font-family: var(--font-mono);
+}
+
+/* ===========================================================
+   Unified hover glow on framed elements
+   =========================================================== */
+
+.features article,
+.feature-band article,
+.card,
+.doc-card,
+.download-card,
+.os-card,
+.paging-prev,
+.paging-next,
+.install-pill,
+.install-command,
+.doc-sec pre,
+.dl-panel {
+  position: relative;
+  transition:
+    transform .25s ease,
+    border-color .25s ease,
+    box-shadow .3s ease,
+    background-color .25s ease;
+}
+
+.features article:hover,
+.feature-band article:hover,
+.card:hover,
+.doc-card:hover,
+.download-card:hover,
+.os-card:hover,
+.paging-prev:hover,
+.paging-next:hover {
+  transform: translateY(-3px);
+  border-color: var(--night-accent);
+  background: linear-gradient(180deg, var(--night-3), var(--night-2));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .04),
+    0 0 0 1px rgba(255, 180, 107, .25),
+    0 14px 36px rgba(0, 0, 0, .42),
+    0 0 30px rgba(255, 180, 107, .14);
+}
+
+.install-pill:hover,
+.install-command:hover {
+  border-color: var(--night-line-2);
+  background: var(--night-3);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, .32);
+}
+
+.doc-sec pre:hover {
+  border-color: var(--night-line-2);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, .3);
+}
+
+/* card-link / doc-card-link underline grows on parent hover */
+.card:hover .card-link,
+.doc-card:hover .doc-card-link {
+  border-bottom-color: var(--night-accent);
+  color: var(--night-accent);
+}
+
+.paging-prev:hover strong,
+.paging-next:hover strong {
+  color: var(--night-accent);
 }
 
 /* ===========================================================

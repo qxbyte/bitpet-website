@@ -298,10 +298,28 @@ function homePage() {
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero-bg" aria-hidden="true"><span class="dotgrid"></span></div>
         <div class="hero-inner">
-          <div class="hero-pets" aria-hidden="true">
-            ${pixelPet('hero-pet hero-pet-1')}
-            ${pixelPet('hero-pet hero-pet-2')}
-            ${pixelPet('hero-pet hero-pet-3')}
+          <div class="hero-duel" aria-hidden="true">
+            <div class="duel-actor duel-left">
+              ${pixelPet('duel-pet')}
+              <svg class="sword sword-orange" viewBox="0 0 20 6" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg">
+                <rect x="0"  y="2" width="3"  height="2" fill="#8b5a3a"/>
+                <rect x="3"  y="1" width="1"  height="4" fill="#5a2618"/>
+                <rect x="4"  y="2" width="13" height="2" fill="#ffb46b"/>
+                <rect x="17" y="2" width="2"  height="2" fill="#ffd9a3"/>
+                <rect x="19" y="3" width="1"  height="1" fill="#fff3d6"/>
+              </svg>
+            </div>
+            <span class="clash"></span>
+            <div class="duel-actor duel-right">
+              <svg class="sword sword-blue" viewBox="0 0 20 6" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg">
+                <rect x="0"  y="3" width="1"  height="1" fill="#dbe6ff"/>
+                <rect x="1"  y="2" width="2"  height="2" fill="#a8b8ff"/>
+                <rect x="3"  y="2" width="13" height="2" fill="#6f7dff"/>
+                <rect x="16" y="1" width="1"  height="4" fill="#1a1f4a"/>
+                <rect x="17" y="2" width="3"  height="2" fill="#8b5a3a"/>
+              </svg>
+              ${pixelPet('duel-pet pet-flip')}
+            </div>
           </div>
           <p class="eyebrow">DESKTOP · CLI · AI HOOKS</p>
           <h1 id="hero-title">A pixel pet that<br />codes alongside you.</h1>
