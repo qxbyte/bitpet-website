@@ -297,33 +297,25 @@ function homePage() {
       ${nav('home')}
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero-bg" aria-hidden="true"><span class="dotgrid"></span></div>
+        <div class="ascii-cloud" aria-hidden="true">
+          <span style="--x:8%;--y:22%;--d:0s">B</span><span style="--x:19%;--y:52%;--d:.7s">i</span>
+          <span style="--x:31%;--y:14%;--d:1.2s">t</span><span style="--x:72%;--y:24%;--d:.4s">P</span>
+          <span style="--x:83%;--y:58%;--d:1.5s">e</span><span style="--x:59%;--y:68%;--d:.9s">t</span>
+          <span style="--x:46%;--y:35%;--d:1.8s">AI</span><span style="--x:14%;--y:75%;--d:.2s">CLI</span>
+        </div>
         <div class="hero-inner">
-          <div class="hero-duel" aria-hidden="true">
-            <div class="duel-actor duel-left">
-              ${pixelPet('duel-pet')}
-              <svg class="sword sword-orange" viewBox="0 0 20 6" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg">
-                <rect x="0"  y="2" width="3"  height="2" fill="#8b5a3a"/>
-                <rect x="3"  y="1" width="1"  height="4" fill="#5a2618"/>
-                <rect x="4"  y="2" width="13" height="2" fill="#ffb46b"/>
-                <rect x="17" y="2" width="2"  height="2" fill="#ffd9a3"/>
-                <rect x="19" y="3" width="1"  height="1" fill="#fff3d6"/>
-              </svg>
-            </div>
-            <span class="clash"></span>
-            <div class="duel-actor duel-right">
-              <svg class="sword sword-blue" viewBox="0 0 20 6" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg">
-                <rect x="0"  y="3" width="1"  height="1" fill="#dbe6ff"/>
-                <rect x="1"  y="2" width="2"  height="2" fill="#a8b8ff"/>
-                <rect x="3"  y="2" width="13" height="2" fill="#6f7dff"/>
-                <rect x="16" y="1" width="1"  height="4" fill="#1a1f4a"/>
-                <rect x="17" y="2" width="3"  height="2" fill="#8b5a3a"/>
-              </svg>
-              ${pixelPet('duel-pet pet-flip')}
-            </div>
+          <div class="ascii-logo" aria-hidden="true">
+            <pre>
+██████╗ ██╗████████╗██████╗ ███████╗████████╗
+██╔══██╗██║╚══██╔══╝██╔══██╗██╔════╝╚══██╔══╝
+██████╔╝██║   ██║   ██████╔╝█████╗     ██║
+██╔══██╗██║   ██║   ██╔═══╝ ██╔══╝     ██║
+██████╔╝██║   ██║   ██║     ███████╗   ██║
+╚═════╝ ╚═╝   ╚═╝   ╚═╝     ╚══════╝   ╚═╝
+            </pre>
           </div>
-          <p class="eyebrow">DESKTOP · CLI · AI HOOKS</p>
-          <h1 id="hero-title">A pixel pet that<br />codes alongside you.</h1>
-          <p class="lede">BitPet 是一只住在桌面右下角的像素宠物。它通过本地 IPC 与 Claude Code、Codex、OpenCode 实时通信——你按下回车它就开始思考，工具调用时显示进度，任务完成它回到闲置。</p>
+          <h1 id="hero-title">Desktop pet companion for AI coding tools</h1>
+          <p class="hero-copy">一只住在桌面上的像素宠物，陪你写代码。它会实时响应 Claude Code、Codex 和 OpenCode 的提示词、工具调用和任务完成状态。</p>
           <div class="hero-actions">
             ${downloadMenu()}
             ${installPill()}

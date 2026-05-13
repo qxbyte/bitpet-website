@@ -723,19 +723,17 @@ button { color: inherit; font: inherit; cursor: pointer; }
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 28px;
   padding: 14px 32px;
   border: 1px solid var(--night-line);
   border-radius: 999px;
   background: var(--night-2);
   margin-bottom: 26px;
-  min-width: 320px;
 }
 
 .duel-actor {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
   flex: 0 0 auto;
 }
 
@@ -752,52 +750,6 @@ button { color: inherit; font: inherit; cursor: pointer; }
 
 .pet-flip { transform: scaleX(-1); }
 
-.sword {
-  display: block;
-  width: 36px;
-  height: 11px;
-  flex: 0 0 auto;
-}
-
-.sword-orange {
-  transform-origin: 0% 50%;
-  animation: slashLeft 1.5s ease-in-out infinite;
-  filter: drop-shadow(0 0 4px rgba(255, 180, 107, .55));
-}
-
-.sword-blue {
-  transform-origin: 100% 50%;
-  animation: slashRight 1.5s ease-in-out infinite;
-  filter: drop-shadow(0 0 4px rgba(111, 125, 255, .55));
-}
-
-.clash {
-  position: relative;
-  display: inline-block;
-  width: 14px;
-  height: 14px;
-  flex: 0 0 auto;
-}
-
-.clash::before,
-.clash::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  opacity: 0;
-  animation: clashSpark 1.5s ease-in-out infinite;
-}
-
-.clash::before {
-  background: radial-gradient(circle, #fff3d6 0%, #ffd736 35%, transparent 60%);
-}
-
-.clash::after {
-  background: radial-gradient(circle, #ffffff 0%, transparent 70%);
-  animation-delay: .05s;
-}
-
 @keyframes lungeLeft {
   0%, 100% { transform: translateX(0); }
   42%      { transform: translateX(8px); }
@@ -808,23 +760,6 @@ button { color: inherit; font: inherit; cursor: pointer; }
   0%, 100% { transform: translateX(0); }
   42%      { transform: translateX(-8px); }
   52%      { transform: translateX(-5px); }
-}
-
-@keyframes slashLeft {
-  0%, 100% { transform: rotate(-10deg); }
-  40%      { transform: rotate(8deg); }
-  55%      { transform: rotate(-4deg); }
-}
-
-@keyframes slashRight {
-  0%, 100% { transform: rotate(10deg); }
-  40%      { transform: rotate(-8deg); }
-  55%      { transform: rotate(4deg); }
-}
-
-@keyframes clashSpark {
-  0%, 30%, 65%, 100% { opacity: 0; transform: scale(.3); }
-  42%, 55%           { opacity: 1; transform: scale(1.4); }
 }
 
 .eyebrow {
