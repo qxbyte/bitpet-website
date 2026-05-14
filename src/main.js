@@ -543,7 +543,33 @@ function docPage(slug) {
   `)
 }
 
+function bindHeroSpotlight() {
+  const h1 = document.querySelector('.hero h1')
+  if (!h1) return
+  if (!window.matchMedia('(hover: hover)').matches) return
+  const onMove = (event) => {
+    const rect = h1.getBoundingClientRect()
+    h1.style.setProperty('--mx', `${event.clientX - rect.left}px`)
+  }
+  const onLeave = () => h1.style.setProperty('--mx', '-9999px')
+  h1.addEventListener('pointermove', onMove)
+  h1.addEventListener('pointerleave', onLeave)
+}
+
+function bindCardSpotlights() {
+  if (!window.matchMedia('(hover: hover)').matches) return
+  document.querySelectorAll('.cards .card').forEach((card) => {
+    card.addEventListener('pointermove', (event) => {
+      const rect = card.getBoundingClientRect()
+      card.style.setProperty('--mx', `${event.clientX - rect.left}px`)
+      card.style.setProperty('--my', `${event.clientY - rect.top}px`)
+    })
+  })
+}
+
 function bindActions() {
+  bindHeroSpotlight()
+  bindCardSpotlights()
   document.querySelectorAll('[data-action="toggle-downloads"]').forEach((button) => {
     button.addEventListener('click', (event) => {
       const menu = event.currentTarget.closest('[data-download-menu]')
