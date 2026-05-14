@@ -285,10 +285,10 @@ button { color: inherit; font: inherit; cursor: pointer; }
 
 .download-panel {
   position: absolute;
+  left: 0;
   right: 0;
   top: calc(100% + 10px);
   display: none;
-  min-width: 240px;
   padding: 6px;
   border: 1px solid var(--night-line);
   border-radius: 14px;
@@ -1027,6 +1027,7 @@ button { color: inherit; font: inherit; cursor: pointer; }
 .card-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
   gap: 22px;
 }
 
@@ -2203,6 +2204,29 @@ button:focus-visible {
   }
 }
 
+/* Cursors — arrow everywhere by default; pointer only on interactive elements. */
+body { cursor: default; }
+
+a,
+a:link,
+a:visited,
+button,
+summary,
+label[for],
+[role="button"],
+[role="link"],
+[role="menuitem"],
+[data-action],
+[data-platform],
+[data-download-menu] {
+  cursor: pointer;
+}
+
+input,
+textarea {
+  cursor: text;
+}
+
 /* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .ascii-cloud span,
@@ -2215,62 +2239,108 @@ button:focus-visible {
 }
 
 /* ===========================================================
-   THEME TRIAL — OPTION 3: Warm tones kept but desaturated
-   Orange stays as accent flavor; saturation dropped to muted
-   peach/cream so it no longer fights the cool sections below.
+   HERO THEME — Option 1: Cool refit
+   First frame (topbar + hero) shifts to JetBrains pink/violet/
+   blue. Pet sprite and install-pill code colors untouched.
    =========================================================== */
 
 .primary-action {
-  background: linear-gradient(135deg, #d9a37a 0%, #c98c5e 100%);
-  border-color: rgba(217, 163, 122, .6);
-  color: #1a0f00;
-  text-shadow: none;
+  background: linear-gradient(135deg, #6B57FF 0%, #B83FB3 45%, #FF6B4A 100%);
+  border-color: rgba(255, 107, 74, .65);
+  color: #ffffff;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, .25);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, .28),
-    inset 0 -1px 0 rgba(0, 0, 0, .14),
-    0 6px 18px rgba(217, 163, 122, .2);
+    inset 0 1px 0 rgba(255, 255, 255, .25),
+    inset 0 -1px 0 rgba(0, 0, 0, .15),
+    0 8px 22px rgba(184, 63, 179, .3);
 }
 
 .primary-action:hover {
-  background: linear-gradient(135deg, #e6b690 0%, #d99c6e 100%);
-  border-color: rgba(217, 163, 122, .8);
+  background: linear-gradient(135deg, #7e6cff 0%, #c552be 45%, #ff8163 100%);
+  border-color: rgba(255, 107, 74, .85);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, .35),
-    inset 0 -1px 0 rgba(0, 0, 0, .14),
-    0 10px 24px rgba(217, 163, 122, .26);
+    inset 0 1px 0 rgba(255, 255, 255, .3),
+    inset 0 -1px 0 rgba(0, 0, 0, .15),
+    0 12px 30px rgba(184, 63, 179, .42);
 }
 
 .topbar .primary-action,
 .topbar .primary-action:hover {
-  background: linear-gradient(180deg, rgba(217, 163, 122, .14) 0%, rgba(217, 163, 122, .04) 100%);
-  border-color: rgba(217, 163, 122, .42);
+  background: linear-gradient(180deg, rgba(107, 87, 255, .18) 0%, rgba(107, 87, 255, .06) 100%);
+  border-color: rgba(107, 87, 255, .42);
   color: var(--night-ink);
   text-shadow: none;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, .05);
 }
 
 .downloads-link {
-  background: linear-gradient(180deg, rgba(217, 163, 122, .12) 0%, rgba(217, 163, 122, .04) 100%);
-  border-color: rgba(217, 163, 122, .42);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .05);
+  background: linear-gradient(180deg, rgba(107, 87, 255, .16) 0%, rgba(107, 87, 255, .06) 100%);
+  border-color: rgba(107, 87, 255, .42);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .06);
 }
 .downloads-link:hover,
 .downloads-link.active {
-  border-color: #d9a37a;
-  background: linear-gradient(180deg, rgba(217, 163, 122, .18) 0%, rgba(217, 163, 122, .06) 100%);
+  border-color: #6B57FF;
+  background: linear-gradient(180deg, rgba(107, 87, 255, .22) 0%, rgba(107, 87, 255, .08) 100%);
 }
 
-/* ASCII floating letters — mostly cool with a muted peach sprinkle */
-.ascii-cloud span { color: #6f7dff; }
-.ascii-cloud span:nth-child(2n) { color: #ff7aa7; }
-.ascii-cloud span:nth-child(3n) { color: #8fd6ff; }
-.ascii-cloud span:nth-child(4n) { color: #c98c5e; }
-.ascii-cloud span:nth-child(5n) { color: #834CEF; }
+/* ASCII floating letters — cool palette anchored with one coral accent */
+.ascii-cloud span { color: #6B57FF; }
+.ascii-cloud span:nth-child(2n) { color: #FF318C; }
+.ascii-cloud span:nth-child(3n) { color: #FF8B5C; }
+.ascii-cloud span:nth-child(4n) { color: #6f7dff; }
+.ascii-cloud span:nth-child(5n) { color: #8fd6ff; }
 
-/* BITPET logo — keep rainbow but pull saturation down + softer halo */
+/* BITPET logo — cool flow with coral anchor + multi-hue halo */
 .ascii-logo {
   filter:
-    saturate(72%)
-    drop-shadow(0 0 24px rgba(255, 180, 107, .14))
-    drop-shadow(0 0 40px rgba(143, 214, 255, .1));
+    drop-shadow(0 0 26px rgba(107, 87, 255, .22))
+    drop-shadow(0 0 50px rgba(255, 49, 140, .14))
+    drop-shadow(0 0 80px rgba(255, 139, 92, .12));
+}
+
+.ascii-logo pre {
+  background: linear-gradient(
+    90deg,
+    #FF8B5C 0%,
+    #FF6B7E 14%,
+    #FF318C 28%,
+    #B83FB3 44%,
+    #6B57FF 60%,
+    #6f7dff 76%,
+    #8fd6ff 90%,
+    #FF8B5C 100%
+  );
+  background-size: 220% 100%;
+  background-position: 0% 50%;
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+          color: transparent;
+}
+
+/* Hero h1 spotlight — coral → pink → violet → blue */
+.hero h1 {
+  background:
+    radial-gradient(
+      ellipse 160px 800px at var(--mx, -9999px) 50%,
+      rgba(255, 250, 240, 0) 0%,
+      rgba(255, 250, 240, 0) 28%,
+      rgba(255, 250, 240, .6) 60%,
+      #fffaf0 92%
+    ),
+    linear-gradient(
+      90deg,
+      #FF8B5C 0%,
+      #FF6B7E 16%,
+      #FF318C 32%,
+      #B83FB3 50%,
+      #6B57FF 70%,
+      #6f7dff 85%,
+      #8fd6ff 100%
+    );
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+          color: transparent;
 }
