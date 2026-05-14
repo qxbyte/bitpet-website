@@ -4,12 +4,12 @@
    =========================================================== */
 
 :root {
-  --night: #0c0c10;
-  --night-2: #131319;
-  --night-3: #1a1a23;
-  --night-4: #20202c;
-  --night-line: #2a2937;
-  --night-line-2: #353349;
+  --night: #000000;
+  --night-2: #0e0e13;
+  --night-3: #19191c;
+  --night-4: #212128;
+  --night-line: #20202a;
+  --night-line-2: #2c2c36;
   --night-ink: #f3edd9;
   --night-ink-2: #d8d2c2;
   --night-muted: #9b94a8;
@@ -992,7 +992,7 @@ button { color: inherit; font: inherit; cursor: pointer; }
 /* ---------- Cards "Explore" section ---------- */
 
 .cards {
-  padding: clamp(20px, 4vw, 40px) clamp(20px, 5vw, 56px) clamp(60px, 8vw, 100px);
+  padding: clamp(56px, 8vw, 96px) clamp(20px, 5vw, 56px) clamp(60px, 8vw, 100px);
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -1002,7 +1002,7 @@ button { color: inherit; font: inherit; cursor: pointer; }
   align-items: baseline;
   justify-content: space-between;
   gap: 20px;
-  margin-bottom: 22px;
+  margin-bottom: 30px;
 }
 
 .cards-head h2 {
@@ -1026,16 +1026,16 @@ button { color: inherit; font: inherit; cursor: pointer; }
 
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
 }
 
 .card {
   display: block;
-  padding: 26px 26px 22px;
+  padding: 18px 20px 16px;
   background: var(--night-2);
   border: 1px solid var(--night-line);
-  border-radius: 18px;
+  border-radius: 16px;
   transition: transform .15s ease, border-color .15s ease;
   text-decoration: none;
 }
@@ -1048,30 +1048,31 @@ button { color: inherit; font: inherit; cursor: pointer; }
 .card-kicker {
   display: inline-block;
   font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.18em;
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--night-accent);
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .card h4 {
-  margin: 0 0 8px;
-  font-size: 20px;
+  margin: 0 0 6px;
+  font-size: 16.5px;
   font-weight: 800;
   letter-spacing: -0.01em;
   color: var(--night-ink);
 }
 
 .card p {
-  margin: 0 0 14px;
+  margin: 0 0 10px;
   color: var(--night-muted);
-  font-size: 15px;
-  line-height: 1.55;
+  font-size: 13.5px;
+  line-height: 1.5;
 }
 
 .card-link {
   display: inline-block;
+  font-size: 13px;
   font-weight: 700;
   color: var(--night-ink);
   border-bottom: 1.5px solid var(--night-ink);
@@ -1801,42 +1802,39 @@ body::after {
   mix-blend-mode: overlay;
 }
 
-/* Richer ambient page backgrounds */
+/* JetBrains-style page backgrounds — pure black + soft blue halo */
 .home-shell {
   background:
-    radial-gradient(ellipse 58% 38% at 16% -4%, rgba(255, 180, 107, .15), transparent 70%),
-    radial-gradient(ellipse 55% 34% at 84% -2%, rgba(111, 125, 255, .12), transparent 72%),
-    radial-gradient(ellipse 90% 50% at 50% 108%, rgba(143, 214, 255, .06), transparent 72%),
-    linear-gradient(180deg, #0e0e13 0%, #0a0a0e 60%, #08080c 100%);
+    radial-gradient(ellipse 70% 36% at 50% -2%, rgba(3, 49, 254, .18), transparent 70%),
+    radial-gradient(ellipse 50% 30% at 14% 22%, rgba(107, 87, 255, .08), transparent 72%),
+    radial-gradient(ellipse 50% 30% at 86% 18%, rgba(255, 49, 140, .07), transparent 72%),
+    #000000;
 }
 
 .downloads-shell {
   background:
-    radial-gradient(ellipse 62% 38% at 50% -5%, rgba(255, 180, 107, .13), transparent 65%),
-    radial-gradient(ellipse 50% 30% at 50% 108%, rgba(111, 125, 255, .07), transparent 72%),
-    linear-gradient(180deg, #0e0e13 0%, #0a0a0e 100%);
+    radial-gradient(ellipse 62% 36% at 50% -3%, rgba(3, 49, 254, .14), transparent 70%),
+    #000000;
 }
 
 .page-docs {
   background:
-    radial-gradient(ellipse 60% 30% at 10% -2%, rgba(255, 180, 107, .08), transparent 72%),
-    linear-gradient(180deg, #0e0e13 0%, #0a0a0e 100%);
+    radial-gradient(ellipse 60% 28% at 12% -2%, rgba(3, 49, 254, .1), transparent 72%),
+    #000000;
 }
 
-/* Topbar — refined glass with inset highlight */
+/* Topbar — black glass */
 .topbar {
-  background:
-    linear-gradient(180deg, rgba(22, 22, 30, .78) 0%, rgba(12, 12, 16, .62) 100%);
-  border-bottom-color: rgba(53, 51, 73, .55);
+  background: rgba(0, 0, 0, .68);
+  border-bottom-color: rgba(255, 255, 255, .06);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, .05),
-    0 1px 0 rgba(0, 0, 0, .35),
-    0 8px 24px rgba(0, 0, 0, .25);
+    inset 0 1px 0 rgba(255, 255, 255, .04),
+    0 1px 0 rgba(0, 0, 0, .4);
   -webkit-backdrop-filter: saturate(180%) blur(18px);
           backdrop-filter: saturate(180%) blur(18px);
 }
 
-/* Card-like surfaces — top highlight + subtle gradient + soft layered shadow */
+/* JetBrains-style card surfaces — flat #19191c with thin border */
 .features article,
 .feature-band article,
 .card,
@@ -1845,42 +1843,36 @@ body::after {
 .paging-prev,
 .paging-next,
 .doc-sec pre {
-  background:
-    linear-gradient(180deg, rgba(36, 35, 49, .68) 0%, rgba(19, 19, 25, .82) 100%);
-  border-color: rgba(53, 51, 73, .55);
+  background: #19191c;
+  border-color: rgba(255, 255, 255, .06);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, .05),
-    0 1px 2px rgba(0, 0, 0, .25),
-    0 12px 32px rgba(0, 0, 0, .35);
+    inset 0 1px 0 rgba(255, 255, 255, .035),
+    0 1px 2px rgba(0, 0, 0, .35);
 }
 
-/* Showcase / code window — cinematic depth */
+/* Showcase / code window — slightly elevated black */
 .showcase-window,
 .code-window {
-  background:
-    linear-gradient(180deg, rgba(28, 28, 38, .92) 0%, rgba(14, 14, 20, .96) 100%);
-  border-color: rgba(53, 51, 73, .6);
+  background: #0e0e13;
+  border-color: rgba(255, 255, 255, .07);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, .07),
-    0 0 0 1px rgba(255, 255, 255, .02),
-    0 30px 70px rgba(0, 0, 0, .55),
-    0 60px 120px rgba(0, 0, 0, .35);
+    inset 0 1px 0 rgba(255, 255, 255, .05),
+    0 30px 70px rgba(0, 0, 0, .6),
+    0 60px 120px rgba(0, 0, 0, .4);
 }
 
 .win-bar,
 .window-title {
-  background:
-    linear-gradient(180deg, rgba(22, 22, 30, .92) 0%, rgba(10, 10, 14, .82) 100%);
+  background: #050507;
   box-shadow: inset 0 -1px 0 rgba(255, 255, 255, .03);
 }
 
 .show-pet,
 .pet-card {
-  background:
-    linear-gradient(180deg, rgba(36, 35, 49, .72) 0%, rgba(20, 20, 28, .86) 100%);
-  border-color: rgba(53, 51, 73, .55);
+  background: #19191c;
+  border-color: rgba(255, 255, 255, .06);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, .05),
+    inset 0 1px 0 rgba(255, 255, 255, .035),
     0 8px 22px rgba(0, 0, 0, .35);
 }
 
@@ -1922,31 +1914,27 @@ body::after {
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, .06);
 }
 
-/* Pills / install command — inner depth */
+/* Pills / install command — flat dark */
 .install-pill,
 .install-command {
-  background:
-    linear-gradient(180deg, rgba(28, 28, 38, .92) 0%, rgba(16, 16, 22, .94) 100%);
-  border-color: rgba(53, 51, 73, .6);
+  background: #19191c;
+  border-color: rgba(255, 255, 255, .06);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, .04),
-    inset 0 0 0 1px rgba(255, 255, 255, .02),
+    inset 0 1px 0 rgba(255, 255, 255, .035),
     0 4px 14px rgba(0, 0, 0, .35);
 }
 
 .copy-btn,
 .copy-command {
-  background:
-    linear-gradient(180deg, rgba(42, 40, 58, .92) 0%, rgba(24, 23, 34, .92) 100%);
+  background: #2a2a30;
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, .05),
+    inset 0 1px 0 rgba(255, 255, 255, .04),
     0 1px 2px rgba(0, 0, 0, .3);
 }
 
 .copy-btn:hover,
 .copy-command:hover {
-  background:
-    linear-gradient(180deg, rgba(58, 55, 78, .95) 0%, rgba(36, 34, 50, .95) 100%);
+  background: #36363e;
 }
 
 /* ASCII logo — rainbow ink + soft multi-color halo */
@@ -2022,18 +2010,82 @@ body::after {
           color: transparent;
 }
 
-/* "Explore" cards — deeper distinctive surface + pointer-following glow.
+/* Ambient blue glow between the showcase and the features grid (JetBrains style). */
+.features {
+  position: relative;
+  isolation: isolate;
+}
+
+.features::before {
+  content: "";
+  position: absolute;
+  top: -360px;
+  left: 25%;
+  width: min(1600px, 120vw);
+  height: 720px;
+  transform: translateX(-50%);
+  background: radial-gradient(
+    ellipse 50% 45% at 50% 50%,
+    rgba(3, 49, 254, .18) 0%,
+    rgba(3, 49, 254, .08) 28%,
+    rgba(3, 49, 254, .03) 55%,
+    transparent 85%
+  );
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Features cards — static JetBrains testimonial-style gradient backgrounds.
+   Each card has its own fixed color theme; no hover color shift. */
+.features article {
+  border-color: rgba(255, 255, 255, .08);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .06),
+    0 1px 2px rgba(0, 0, 0, .35);
+}
+
+.features > article:nth-child(1) {
+  background: linear-gradient(135deg, #c11651 0%, #ad1f6e 50%, #882d8d 100%);
+}
+.features > article:nth-child(2) {
+  background: linear-gradient(135deg, #8a2bb5 0%, #5a268a 50%, #3a205f 100%);
+}
+.features > article:nth-child(3) {
+  background: linear-gradient(135deg, #2a2576 0%, #2e2879 50%, #3f328a 100%);
+}
+
+/* Hover: lift only, no color shift. Override the global orange ring. */
+.features article:hover {
+  border-color: rgba(255, 255, 255, .16);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .08),
+    0 16px 40px rgba(0, 0, 0, .55);
+}
+
+/* Keep text and code chips white on the colorful gradients */
+.features article h3,
+.features article p,
+.features article code {
+  color: #ffffff;
+}
+
+.features article code {
+  background: rgba(255, 255, 255, .15);
+}
+
+/* "Explore" cards (6 smaller cards) — JetBrains-style deep navy base with a
+   pointer-following pink → violet → blue glow. The radial fades to transparent
+   so the navy base shows through on the far side of the cursor.
    --mx / --my are updated by JS on pointermove. */
 .cards .card {
   position: relative;
   overflow: hidden;
   isolation: isolate;
-  background: linear-gradient(160deg, #181628 0%, #0c0b15 100%);
-  border-color: rgba(48, 46, 70, .55);
+  background: #00154C;
+  border-color: rgba(255, 255, 255, .06);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, .04),
-    0 1px 2px rgba(0, 0, 0, .35),
-    0 14px 36px rgba(0, 0, 0, .42);
+    0 1px 2px rgba(0, 0, 0, .35);
 }
 
 .cards .card::before {
@@ -2042,10 +2094,11 @@ body::after {
   inset: 0;
   border-radius: inherit;
   background: radial-gradient(
-    circle 720px at var(--mx, 65%) var(--my, 70%),
+    circle 460px at var(--mx, 50%) var(--my, 50%),
     #ff3d8b 0%,
-    #8b3df1 38%,
-    #2b4cff 95%
+    #8b3df1 30%,
+    #2b4cff 60%,
+    rgba(43, 76, 255, 0) 92%
   );
   opacity: 0;
   pointer-events: none;
@@ -2060,42 +2113,44 @@ body::after {
   z-index: 1;
 }
 
-/* Override the global hover ring — no orange border / outer glow on Explore cards. */
+/* Suppress the global orange ring on Explore cards — the gradient is the hover treatment. */
 .cards .card:hover {
   transform: translateY(-3px);
-  border-color: rgba(48, 46, 70, .55);
-  background: linear-gradient(160deg, #1b1830 0%, #0e0d18 100%);
+  border-color: rgba(255, 255, 255, .12);
+  background: #00154C;
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, .05),
-    0 18px 44px rgba(0, 0, 0, .5);
+    0 18px 44px rgba(0, 0, 0, .55);
+}
+
+.cards .card:hover .card-kicker,
+.cards .card:hover h4,
+.cards .card:hover p {
+  color: #ffffff;
 }
 
 .cards .card:hover .card-link {
-  border-bottom-color: rgba(255, 255, 255, .65);
-  color: var(--night-ink);
+  border-bottom-color: rgba(255, 255, 255, .7);
+  color: #ffffff;
 }
 
-/* Sidebar — tinted background + refined active state */
+/* Sidebar — flat black with subtle right border */
 .docs-side {
-  background:
-    linear-gradient(180deg, rgba(16, 16, 22, .65) 0%, rgba(10, 10, 14, .35) 100%);
-  border-right-color: rgba(53, 51, 73, .5);
+  background: #000000;
+  border-right-color: rgba(255, 255, 255, .06);
 }
 
 .side-group a.is-active {
-  background:
-    linear-gradient(180deg, rgba(255, 180, 107, .1) 0%, rgba(255, 180, 107, .03) 100%);
+  background: rgba(255, 255, 255, .04);
   box-shadow:
     inset 2px 0 0 var(--night-accent),
     inset 0 1px 0 rgba(255, 255, 255, .04);
 }
 
-/* Footer — tinted gradient with top highlight */
+/* Footer — flat black with thin top border */
 .site-foot {
-  background:
-    linear-gradient(180deg, rgba(15, 15, 21, .85) 0%, rgba(10, 10, 14, .98) 100%);
-  border-top-color: rgba(53, 51, 73, .55);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .03);
+  background: #000000;
+  border-top-color: rgba(255, 255, 255, .06);
 }
 
 /* Speech bubble — warm tint with halo */
@@ -2139,6 +2194,13 @@ button:focus-visible {
   outline: 2px solid rgba(255, 180, 107, .55);
   outline-offset: 2px;
   border-radius: 8px;
+}
+
+/* Tablet — keep Explore at 2 columns instead of collapsing to 1 */
+@media (min-width: 561px) and (max-width: 940px) {
+  .cards .card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 /* Respect reduced motion */

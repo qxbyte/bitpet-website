@@ -379,26 +379,38 @@ function homePage() {
           <a class="card" href="/docs/install">
             <span class="card-kicker">Get Started</span>
             <h4>Install BitPet</h4>
-            <p>一行 npm 命令安装 CLI 和桌面应用，或者从 GitHub Release 单独下载。</p>
-            <span class="card-link">Read install guide →</span>
+            <p>一行 npm 命令安装 CLI 和桌面应用。</p>
+            <span class="card-link">Install guide →</span>
           </a>
           <a class="card" href="/docs/integrations">
             <span class="card-kicker">Integrate</span>
             <h4>AI Coding Hooks</h4>
-            <p>配置 Claude Code、Codex、OpenCode 的 hook，让宠物随会话节奏切换状态。</p>
+            <p>Claude Code、Codex、OpenCode 的 hook 配置。</p>
             <span class="card-link">Hook your tools →</span>
           </a>
           <a class="card" href="/docs/usage">
             <span class="card-kicker">Reference</span>
             <h4>CLI Commands</h4>
-            <p>所有可用命令、效果、状态文件位置——一个表格列清楚。</p>
-            <span class="card-link">View command list →</span>
+            <p>所有可用命令、效果、状态文件位置一览。</p>
+            <span class="card-link">Command list →</span>
           </a>
           <a class="card" href="/docs/states">
             <span class="card-kicker">Mechanics</span>
             <h4>Pet state machine</h4>
-            <p>hunger / mood / energy 如何衰减，sleeping、active、idle 的触发规则。</p>
-            <span class="card-link">See state rules →</span>
+            <p>hunger / mood / energy 衰减与动画触发规则。</p>
+            <span class="card-link">State rules →</span>
+          </a>
+          <a class="card" href="/docs/troubleshooting">
+            <span class="card-kicker">Help</span>
+            <h4>Troubleshooting</h4>
+            <p>窗口不显示、命令找不到、hook 无响应等排查。</p>
+            <span class="card-link">View fixes →</span>
+          </a>
+          <a class="card ext" href="${repoUrl}" target="_blank" rel="noreferrer">
+            <span class="card-kicker">Source</span>
+            <h4>GitHub repo</h4>
+            <p>查看源码、提 Issue、跟踪 Releases。</p>
+            <span class="card-link">Open on GitHub ↗</span>
           </a>
         </div>
       </section>
@@ -556,9 +568,9 @@ function bindHeroSpotlight() {
   h1.addEventListener('pointerleave', onLeave)
 }
 
-function bindCardSpotlights() {
+function bindSpotlights(selector) {
   if (!window.matchMedia('(hover: hover)').matches) return
-  document.querySelectorAll('.cards .card').forEach((card) => {
+  document.querySelectorAll(selector).forEach((card) => {
     card.addEventListener('pointermove', (event) => {
       const rect = card.getBoundingClientRect()
       card.style.setProperty('--mx', `${event.clientX - rect.left}px`)
@@ -569,7 +581,7 @@ function bindCardSpotlights() {
 
 function bindActions() {
   bindHeroSpotlight()
-  bindCardSpotlights()
+  bindSpotlights('.cards .card')
   document.querySelectorAll('[data-action="toggle-downloads"]').forEach((button) => {
     button.addEventListener('click', (event) => {
       const menu = event.currentTarget.closest('[data-download-menu]')
