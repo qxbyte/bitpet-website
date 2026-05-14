@@ -1777,3 +1777,276 @@ button { color: inherit; font: inherit; cursor: pointer; }
 
   .code-window { box-shadow: 0 16px 40px rgba(0, 0, 0, .45); }
 }
+
+/* ===========================================================
+   Texture & polish — grain, depth, refined surfaces.
+   Layered on top of base styles to add filmic quality without
+   touching layout, structure, or page content.
+   =========================================================== */
+
+body {
+  font-feature-settings: "ss01", "ss02", "cv11", "tnum", "calt";
+}
+
+/* Filmic grain overlay — subtle SVG noise across the viewport. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .5 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  background-size: 240px 240px;
+  opacity: .045;
+  mix-blend-mode: overlay;
+}
+
+/* Richer ambient page backgrounds */
+.home-shell {
+  background:
+    radial-gradient(ellipse 58% 38% at 16% -4%, rgba(255, 180, 107, .15), transparent 70%),
+    radial-gradient(ellipse 55% 34% at 84% -2%, rgba(111, 125, 255, .12), transparent 72%),
+    radial-gradient(ellipse 90% 50% at 50% 108%, rgba(143, 214, 255, .06), transparent 72%),
+    linear-gradient(180deg, #0e0e13 0%, #0a0a0e 60%, #08080c 100%);
+}
+
+.downloads-shell {
+  background:
+    radial-gradient(ellipse 62% 38% at 50% -5%, rgba(255, 180, 107, .13), transparent 65%),
+    radial-gradient(ellipse 50% 30% at 50% 108%, rgba(111, 125, 255, .07), transparent 72%),
+    linear-gradient(180deg, #0e0e13 0%, #0a0a0e 100%);
+}
+
+.page-docs {
+  background:
+    radial-gradient(ellipse 60% 30% at 10% -2%, rgba(255, 180, 107, .08), transparent 72%),
+    linear-gradient(180deg, #0e0e13 0%, #0a0a0e 100%);
+}
+
+/* Topbar — refined glass with inset highlight */
+.topbar {
+  background:
+    linear-gradient(180deg, rgba(22, 22, 30, .78) 0%, rgba(12, 12, 16, .62) 100%);
+  border-bottom-color: rgba(53, 51, 73, .55);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .05),
+    0 1px 0 rgba(0, 0, 0, .35),
+    0 8px 24px rgba(0, 0, 0, .25);
+  -webkit-backdrop-filter: saturate(180%) blur(18px);
+          backdrop-filter: saturate(180%) blur(18px);
+}
+
+/* Card-like surfaces — top highlight + subtle gradient + soft layered shadow */
+.features article,
+.feature-band article,
+.card,
+.doc-card,
+.download-card,
+.paging-prev,
+.paging-next,
+.doc-sec pre {
+  background:
+    linear-gradient(180deg, rgba(36, 35, 49, .68) 0%, rgba(19, 19, 25, .82) 100%);
+  border-color: rgba(53, 51, 73, .55);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .05),
+    0 1px 2px rgba(0, 0, 0, .25),
+    0 12px 32px rgba(0, 0, 0, .35);
+}
+
+/* Showcase / code window — cinematic depth */
+.showcase-window,
+.code-window {
+  background:
+    linear-gradient(180deg, rgba(28, 28, 38, .92) 0%, rgba(14, 14, 20, .96) 100%);
+  border-color: rgba(53, 51, 73, .6);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .07),
+    0 0 0 1px rgba(255, 255, 255, .02),
+    0 30px 70px rgba(0, 0, 0, .55),
+    0 60px 120px rgba(0, 0, 0, .35);
+}
+
+.win-bar,
+.window-title {
+  background:
+    linear-gradient(180deg, rgba(22, 22, 30, .92) 0%, rgba(10, 10, 14, .82) 100%);
+  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, .03);
+}
+
+.show-pet,
+.pet-card {
+  background:
+    linear-gradient(180deg, rgba(36, 35, 49, .72) 0%, rgba(20, 20, 28, .86) 100%);
+  border-color: rgba(53, 51, 73, .55);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .05),
+    0 8px 22px rgba(0, 0, 0, .35);
+}
+
+/* Buttons — gradient surface + inset highlight + soft glow */
+.primary-action {
+  background:
+    linear-gradient(180deg, #ffc187 0%, #ffa965 55%, #ff9550 100%);
+  border-color: rgba(255, 154, 94, .85);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .35),
+    inset 0 -1px 0 rgba(120, 50, 0, .22),
+    0 8px 20px rgba(255, 154, 94, .22);
+  text-shadow: 0 1px 0 rgba(255, 220, 180, .3);
+}
+
+.primary-action:hover {
+  background:
+    linear-gradient(180deg, #ffd0a0 0%, #ffb87a 55%, #ffa162 100%);
+  border-color: rgba(255, 154, 94, .95);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .45),
+    inset 0 -1px 0 rgba(120, 50, 0, .22),
+    0 12px 28px rgba(255, 154, 94, .32);
+}
+
+.topbar .primary-action,
+.topbar .primary-action:hover {
+  background:
+    linear-gradient(180deg, rgba(255, 180, 107, .16) 0%, rgba(255, 180, 107, .06) 100%);
+  border-color: rgba(255, 180, 107, .42);
+  color: var(--night-ink);
+  text-shadow: none;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .06);
+}
+
+.downloads-link {
+  background:
+    linear-gradient(180deg, rgba(255, 180, 107, .14) 0%, rgba(255, 180, 107, .04) 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .06);
+}
+
+/* Pills / install command — inner depth */
+.install-pill,
+.install-command {
+  background:
+    linear-gradient(180deg, rgba(28, 28, 38, .92) 0%, rgba(16, 16, 22, .94) 100%);
+  border-color: rgba(53, 51, 73, .6);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .04),
+    inset 0 0 0 1px rgba(255, 255, 255, .02),
+    0 4px 14px rgba(0, 0, 0, .35);
+}
+
+.copy-btn,
+.copy-command {
+  background:
+    linear-gradient(180deg, rgba(42, 40, 58, .92) 0%, rgba(24, 23, 34, .92) 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .05),
+    0 1px 2px rgba(0, 0, 0, .3);
+}
+
+.copy-btn:hover,
+.copy-command:hover {
+  background:
+    linear-gradient(180deg, rgba(58, 55, 78, .95) 0%, rgba(36, 34, 50, .95) 100%);
+}
+
+/* ASCII logo — gradient ink + soft halo */
+.ascii-logo {
+  filter:
+    drop-shadow(0 0 30px rgba(255, 180, 107, .25))
+    drop-shadow(0 0 60px rgba(255, 180, 107, .08));
+}
+
+.ascii-logo pre {
+  background: linear-gradient(180deg, #ffd9b1 0%, #ffb46b 50%, #ff8a4d 100%);
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+          color: transparent;
+}
+
+/* Hero / page titles — warm-white gradient */
+.hero h1,
+.downloads-hero h1,
+.docs-hero h1 {
+  background: linear-gradient(180deg, #fffaf0 0%, #ece4cd 100%);
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+          color: transparent;
+}
+
+/* Sidebar — tinted background + refined active state */
+.docs-side {
+  background:
+    linear-gradient(180deg, rgba(16, 16, 22, .65) 0%, rgba(10, 10, 14, .35) 100%);
+  border-right-color: rgba(53, 51, 73, .5);
+}
+
+.side-group a.is-active {
+  background:
+    linear-gradient(180deg, rgba(255, 180, 107, .1) 0%, rgba(255, 180, 107, .03) 100%);
+  box-shadow:
+    inset 2px 0 0 var(--night-accent),
+    inset 0 1px 0 rgba(255, 255, 255, .04);
+}
+
+/* Footer — tinted gradient with top highlight */
+.site-foot {
+  background:
+    linear-gradient(180deg, rgba(15, 15, 21, .85) 0%, rgba(10, 10, 14, .98) 100%);
+  border-top-color: rgba(53, 51, 73, .55);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .03);
+}
+
+/* Speech bubble — warm tint with halo */
+.speech {
+  background:
+    linear-gradient(180deg, rgba(255, 180, 107, .16) 0%, rgba(255, 180, 107, .05) 100%);
+  border-color: rgba(255, 180, 107, .45);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .05),
+    0 4px 14px rgba(255, 180, 107, .14);
+}
+
+/* Tags — inner highlight */
+.c-tag {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .07);
+}
+
+/* Selection */
+::selection {
+  background: rgba(255, 180, 107, .35);
+  color: #1a0f00;
+}
+
+/* Refined scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(53, 51, 73, .55);
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(80, 76, 110, .85);
+  background-clip: content-box;
+}
+
+/* Subtle focus ring */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid rgba(255, 180, 107, .55);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .ascii-cloud span,
+  .duel-left,
+  .duel-right,
+  .pet-sprite,
+  .show-pet-sprite,
+  .large-pet { animation: none !important; }
+}
